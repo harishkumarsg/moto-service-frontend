@@ -29,7 +29,9 @@ const Dashboard = () => {
   useEffect(() => {
     async function fetchStats() {
       try {
-        const response = await fetch('https://moto-service-backend-ypao.onrender.com/api/bookings/stats');
+        // Use the env variable here
+        const apiUrl = process.env.REACT_APP_API_URL;
+        const response = await fetch(`${apiUrl}/api/bookings/stats`);
         const stats = await response.json();
 
         // Create array for counts with default zeros

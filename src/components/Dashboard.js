@@ -29,20 +29,16 @@ const Dashboard = () => {
   useEffect(() => {
     async function fetchStats() {
       try {
-        // Use the env variable here
         const apiUrl = process.env.REACT_APP_API_URL;
         const response = await fetch(`${apiUrl}/api/bookings/stats`);
         const stats = await response.json();
 
-        // Create array for counts with default zeros
         const monthlyCounts = new Array(12).fill(0);
 
-        // Fill counts from API response, _id is month number 1-12
         stats.forEach(item => {
           monthlyCounts[item._id - 1] = item.count;
         });
 
-        // Update chart data state
         setData(prevData => ({
           ...prevData,
           datasets: [
@@ -65,7 +61,7 @@ const Dashboard = () => {
     scales: {
       y: {
         beginAtZero: true,
-        suggestedMax: 10,  // Adjust max according to your data
+        suggestedMax: 10,
       },
     },
     plugins: {

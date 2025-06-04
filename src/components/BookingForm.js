@@ -8,6 +8,9 @@ function BookingForm() {
     contact: '',
   });
 
+  const [message, setMessage] = useState('');
+  const apiUrl = process.env.REACT_APP_API_URL; // ✅ Use environment variable
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -16,7 +19,7 @@ function BookingForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5000/api/bookings', {
+      const response = await fetch(`${apiUrl}/api/bookings`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,7 +28,7 @@ function BookingForm() {
       });
 
       if (response.ok) {
-        alert('Service booked successfully!');
+        setMessage('✅ Service booked successfully!');
         setFormData({
           name: '',
           motorcycleModel: '',
@@ -33,10 +36,10 @@ function BookingForm() {
           contact: '',
         });
       } else {
-        alert('Failed to book service. Try again.');
+        setMessage('❌ Failed to book service. Please try again.');
       }
     } catch (error) {
-      alert('Error: ' + error.message);
+      setMessage('❌ Error: Failed to fetch. Please check backend or network.');
     }
   };
 
@@ -94,6 +97,7 @@ function BookingForm() {
 
         <button type="submit" className="btn btn-primary">Book Service</button>
       </form>
+      {message && <p className="mt-3">{message}</p>}
     </div>
   );
 }

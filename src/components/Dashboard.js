@@ -77,8 +77,10 @@ const Dashboard = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Booking Stats</h2>
-      <Bar data={data} options={options} />
+      <div className="card shadow-sm p-4">
+        <h2 className="text-center mb-4">Booking Stats</h2>
+        <Bar data={data} options={options} />
+      </div>
     </div>
   );
 };

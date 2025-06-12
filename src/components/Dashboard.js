@@ -10,46 +10,58 @@ import {
   Legend,
 } from 'chart.js';
 
-// Register necessary chart components
+// Register chart components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const Dashboard = () => {
-  // Initialize chart data with all zero counts for 12 months
+function Dashboard() {
+  const [user, setUser] = useState(null);
   const [data, setData] = useState({
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
         label: 'Number of Bookings',
-        data: new Array(12).fill(0),  // zero for all months initially
+        data: new Array(12).fill(0),
         backgroundColor: 'rgba(54, 162, 235, 0.6)',
       },
     ],
   });
 
+  const [error, setError] = useState('');
+
   useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+
     async function fetchStats() {
       try {
         const apiUrl = process.env.REACT_APP_API_URL;
-        const response = await fetch(`${apiUrl}/api/bookings/stats`);
+        const token = localStorage.getItem('token');
+
+        const response = await fetch(`${apiUrl}/api/bookings/stats`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch booking stats');
+        }
+
         const stats = await response.json();
-
         const monthlyCounts = new Array(12).fill(0);
-
         stats.forEach(item => {
           monthlyCounts[item._id - 1] = item.count;
         });
 
-        setData(prevData => ({
-          ...prevData,
-          datasets: [
-            {
-              ...prevData.datasets[0],
-              data: monthlyCounts,
-            },
-          ],
+        setData(prev => ({
+          ...prev,
+          datasets: [{ ...prev.datasets[0], data: monthlyCounts }],
         }));
-      } catch (error) {
-        console.error('Error fetching booking stats:', error);
+      } catch (err) {
+        setError('⚠️ Unable to load chart data.');
+        console.error(err);
       }
     }
 
@@ -70,7 +82,7 @@ const Dashboard = () => {
       },
       title: {
         display: true,
-        text: 'Monthly Motorcycle Service Bookings',
+        text: '📊 Monthly Motorcycle Service Bookings',
       },
     },
   };
@@ -78,11 +90,13 @@ const Dashboard = () => {
   return (
     <div className="container mt-5">
       <div className="card shadow-sm p-4">
-        <h2 className="text-center mb-4">Booking Stats</h2>
+        <h2 className="text-center mb-3">Dashboard</h2>
+        {user && <h5 className="text-center">Welcome, {user.name} 👋</h5>}
+        {error && <p className="text-danger text-center">{error}</p>}
         <Bar data={data} options={options} />
       </div>
     </div>
   );
-};
+}
 
 export default Dashboard;

@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+# 🎨 Moto Service Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend of the **Moto Service** web application – a motorcycle service booking platform. Built using **React.js**, it enables users to register, log in, book services, and view booking stats through a modern and responsive user interface.
 
-## Available Scripts
+## 📁 Project Structure
 
-In the project directory, you can run:
+moto-service-frontend/
+│
+├── public/             # Static files and index.html
+├── src/
+│   ├── components/     # React components (Home, Login, Register, Booking, etc.)
+│   ├── App.js          # App routes and layout
+│   ├── index.js        # React entry point
+│   └── styles/         # Custom styles (optional)
+├── .env                # Environment variables
+├── package.json        # Dependencies and scripts
 
-### npm start
+## ⚙️ Technologies Used
 
-Runs the app in the development mode.  
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React.js (with Hooks)
+- React Router DOM
+- Bootstrap & Custom CSS
+- Toastify for alerts
+- dotenv for API environment configuration
 
-The page will reload when you make changes.  
-You may also see any lint errors in the console.
+---
 
-### npm test
+## 🚀 Features
 
-Launches the test runner in the interactive watch mode.  
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 🔐 User Registration and Login
+- 🗓️ Motorcycle Service Booking Form
+- 📊 Dashboard with Monthly Booking Stats (Chart.js)
+- 🔐 Protected Routes using localStorage token
+- 🌐 Responsive UI using Bootstrap
+- 📸 Home page with Hero Banner and Image Gallery
 
-### npm run build
+---
 
-Builds the app for production to the build folder.  
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🌍 Pages Overview
 
-The build is minified and the filenames include the hashes.  
-Your app is ready to be deployed!
+- `/` – Home Page with images, service highlights, and booking CTA
+- `/about` – Info about the service and platform
+- `/login` – User login
+- `/register` – User registration
+- `/booking` – Book a service
+- `/dashboard` – View monthly booking statistics
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### npm run eject
+## 🛠️ Setup Instructions
 
-**Note: this is a one-way operation. Once you eject, you can't go back!**
+### 1️⃣ Clone the Repository
 
-If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
+```bash
+git clone https://github.com/yourusername/moto-service-frontend.git
+cd moto-service-frontend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except eject will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2️⃣ Install Dependencies
+bash
+Copy
+Edit
+npm install
 
-You don't have to ever use eject. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3️⃣ Create .env File
+Create a .env file in the root folder with:
+env
+Copy
+Edit
+REACT_APP_API_URL=https://your-backend-api-url.com
 
-## Learn More
+4️⃣ Run the Application
+bash
+Copy
+Edit
+npm start
+App runs at http://localhost:3000
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🌐 Deployment on Netlify
+Login to Netlify
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Click “Add New Site” → “Import an Existing Project”
 
-### Code Splitting
+Connect your GitHub frontend repo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Set Build Settings:
 
-### Analyzing the Bundle Size
+Build Command: npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Publish Directory: build
 
-### Making a Progressive Web App
+Set Environment Variable:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+REACT_APP_API_URL = your backend Render URL
 
-### Advanced Configuration
+Deploy the site
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+📬 Contact
+If you face issues or want to contribute:
 
-### Deployment
+📧 Email: harishkumarsg.03@gmail.com
+💻 GitHub: https://github.com/harishkumarsg
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### npm run build fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+📝 License
+This project is licensed under the MIT License.

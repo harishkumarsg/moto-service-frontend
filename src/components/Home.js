@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import bikeBanner from '../assets/bike-banner.jpg'; // 📸 Add actual image in src/assets/
+import bikeBanner from '../assets/bike-banner.jpg';
 import garage1 from '../assets/garage1.jpg';
 import garage2 from '../assets/garage2.jpg';
-import mechanicIcon from '../assets/mechanic.png'; // Optional icons for service highlights
+import mechanicIcon from '../assets/mechanic.png';
 
 function Home() {
   return (
@@ -34,17 +34,17 @@ function Home() {
         <h2 className="text-center mb-4">Why Choose Us?</h2>
         <div className="row text-center">
           <div className="col-md-4 mb-4">
-            <img src={mechanicIcon} alt="Expert Mechanics" width="60" />
+            <img src={mechanicIcon} alt="Expert Mechanics icon" width="60" />
             <h5 className="mt-3">Expert Mechanics</h5>
             <p>Professionally trained service technicians to keep your bike running like new.</p>
           </div>
           <div className="col-md-4 mb-4">
-            <img src={mechanicIcon} alt="Timely Delivery" width="60" />
+            <img src={mechanicIcon} alt="Timely Delivery icon" width="60" />
             <h5 className="mt-3">Timely Delivery</h5>
             <p>On-time service that ensures your ride is always ready.</p>
           </div>
           <div className="col-md-4 mb-4">
-            <img src={mechanicIcon} alt="Genuine Parts" width="60" />
+            <img src={mechanicIcon} alt="Genuine Parts icon" width="60" />
             <h5 className="mt-3">Genuine Parts</h5>
             <p>We use original spare parts to ensure durability and performance.</p>
           </div>
@@ -56,10 +56,10 @@ function Home() {
         <h2 className="text-center mb-4">Our Garage</h2>
         <div className="row">
           <div className="col-md-6 mb-3">
-            <img src={garage1} className="img-fluid rounded shadow" alt="Garage Image 1" />
+            <img src={garage1} className="img-fluid rounded shadow" alt="Inside our motorcycle garage" />
           </div>
           <div className="col-md-6 mb-3">
-            <img src={garage2} className="img-fluid rounded shadow" alt="Garage Image 2" />
+            <img src={garage2} className="img-fluid rounded shadow" alt="Technicians working in the garage" />
           </div>
         </div>
       </div>
